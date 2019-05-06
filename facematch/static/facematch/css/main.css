@@ -1,0 +1,205 @@
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+ul {
+  margin: 0;
+}
+
+.bg-steel {
+  background-color: #5f788a;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+ /* height: 10px;
+  width: 10px;*/
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+/*The Styling for File Upload*/
+.picture-container{
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.picture{
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    color: #FFFFFF;
+    margin: 5px auto;
+    overflow: hidden;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.picture > .icon{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    color: #37474F;
+    border: 4px solid #CCCCCC;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.picture:hover .icon{
+    border-color: greenyellow;
+}
+
+.picture > .icon > svg{
+    height: 1.4em;
+    font-size: 4em;
+}
+
+.picture > svg{
+    width: 100%;
+    height: 100%;
+}
+
+.picture input[type="file"]{
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    right: 0;
+    bottom: 0;
+}
+
+/*svg tick animation*/
+.circ {
+    opacity: 0;
+    display: none;
+    stroke-dasharray: 130;
+    stroke-dashoffset: 130;
+    -webkit-transition: all .75s;
+    -moz-transition: all .75s;
+    -ms-transition: all .75s;
+    -o-transition: all .75s;
+    transition: all .75s;
+}
+.tick{
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    -webkit-transition: stroke-dashoffset .4s 0.5s ease-out;
+    -moz-transition: stroke-dashoffset .4s 0.5s ease-out;
+    -ms-transition: stroke-dashoffset .4s 0.5s ease-out;
+    -o-transition: stroke-dashoffset .4s 0.5s ease-out;
+    transition: stroke-dashoffset .4s 0.5s ease-out;
+}
+.drawn > svg .path{
+    display: block;
+    opacity: 1;
+    stroke-dashoffset: 0;
+}
+
+.drawn{
+    border-color: #fff;
+}
+
+[data-toggle="popover"]{
+    cursor: pointer;
+}
+
+span.popover-content-remove {
+    padding-left: 10px;
+    color: red;
+    cursor: pointer;
+    float: right;
+}
+
+.pb10{
+    padding-bottom: 10px;
+}
+
+.popover-header{
+    text-align: center;
+}
+
+.popover{
+    min-width: 200px;
+}

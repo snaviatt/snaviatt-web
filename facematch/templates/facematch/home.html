@@ -1,0 +1,34 @@
+{% extends "facematch/base.html" %}
+{% load static %}
+{% block content %}
+    <div style="text-align: center; margin-bottom:70px;">
+        <img src="{% static 'facematch/img/m.png' %}" alt="logo" style="width:100px; height:100px;">
+        <h1>Snaviatt</h1>
+        <h4>The next generation Attendance marking Software.</h4>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Add Student</h3>
+                    <p class="card-text">Add Student Data here.</p>
+                    <div class="text-center">
+                        <a href="{% url 'facematch-student' %}" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Upload Attendance</h3>
+                    <p class="card-text">Upload Attendance via Image/Video File.</p>
+                    <div class="text-center">
+                        <a href="{% url 'facematch-attendance' %}" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

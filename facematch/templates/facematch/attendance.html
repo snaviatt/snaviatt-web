@@ -1,0 +1,22 @@
+{% extends "facematch/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Mark Attendance</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <fiedlset class="form-group">
+                <p>Image/Video File*</p>
+                <input class="mb-3 " type="file" accept=".jpg,.jpeg.,.gif,.png,.mov,.mp4" />
+            </fiedlset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update Attendance</button>
+            </div>
+        </form>
+    </div>
+
+
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends "facematch/base.html" %}
+{% block content %}
+    {% for data in student_data %}
+        <h5>{{ data.name }}</h5>
+        <p>{{ data.roll_no }}</p>
+        <p>{{ data.subject }}</p>
+        <p>{{ data.date }}</p>
+        <h5>{{ data.attendance }}</h5>
+    {% endfor %}
+{% endblock content %}
+

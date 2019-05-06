@@ -1,0 +1,106 @@
+{% extends "facematch/base.html" %}
+{% block content %}
+    <div class="custom-file-picker">
+        <div class="picture-container form-group">
+            <h4 class="info_text">Upload Image or Video</h4>
+            <div class="picture">
+                <span class="icon"><i class="fas fa-file-upload"></i></span>
+                <input type="file" class="wizard-file" multiple id="a8755cf0-f4d1-6376-ee21-a6defd1e7c08">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 37 37" xml:space="preserve">
+                    <path class="circ path" style="fill:none;stroke:#77d27b;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:10;" d="M30.5,6.5L30.5,6.5c6.6,6.6,6.6,17.4,0,24l0,0c-6.6,6.6-17.4,6.6-24,0l0,0c-6.6-6.6-6.6-17.4,0-24l0,0C13.1-0.2,23.9-0.2,30.5,6.5z"></path>
+                    <polyline class="tick path" style="fill:none;stroke:#77d27b;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:10;" points="11.6,20 15.9,24.2 26.4,13.8 "></polyline>
+                </svg>
+            </div>
+        </div>
+        <div class="popover-container text-center">
+            <p data-toggle="popover" data-id="a8755cf0-f4d1-6376-ee21-a6defd1e7c08" class="btn-popover" data-original-title="" title="">
+                <span class="file-total-viewer">0</span> Files Selected <input type="button" value="view" href="javascript:void(0)" class="btn btn-success btn-xs btn-file-view">
+            </p>
+        </div>
+    </div>
+    <script>
+        //Global object to store the files
+        let fileStorage = {};
+        $(document).ready(function(){
+            $("input[type='file']").change(function(e){
+            //Get the id
+            let id = e.target.id;
+            //Get the files
+            let files = e.target.files;
+            //Store the file
+            storeFile(id, files);
+            //Show the complete icon
+            $(this).siblings('.icon').hide();
+            $(this).parent().removeClass('drawn');
+            setTimeout(() => {
+                $(this).parent().addClass('drawn');
+            }, 50);
+        });
+
+        //Store the file for particular filepicker
+        let storeFile = (id, files) => {
+            fileStorage[id] = files;
+            //Update the file count
+            $(`[data-id="${id}"] > .file-total-viewer`).text(files.length);
+        }
+        //Show file list
+        $('[data-toggle="popover"]').popover({
+                html: true,
+                title: "Files",
+                content: function () {
+                    //Get the id of the file picker
+                    let id = $(this).attr('data-id');
+
+                    //Get all the files of this filepicker
+                    let items = fileStorage[id];
+                    //Preview the file
+                    let template = '<div class="row">';
+                    if(items && items.length){
+                        for(let val of items){
+                            template += "<div class='col-12 pb10'><span class='popover-content-file-name'>" + val.name + "</span><span class='popover-content-remove' data-target='" + id + "' data-name='" + val.name + "' data-type='upload'><i class='fas fa-trash'></i></span></div>"
+                        }
+                    }else{
+                        template += "<div class='col-12 pb10'><span class='popover-content'>No file found</span></div>";
+                    }
+                    template += '</div>';
+                    return template;
+                },
+                placement:"bottom"
+        });
+        //Prevent multiple popover
+        $('body').on('click', function (e) {
+            $('[data-toggle="popover"],[data-original-title]').each(function () {
+                //the 'is' for buttons that trigger popups
+                //the 'has' for icons within a button that triggers a popup
+                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                    (($(this).popover('hide').data('bs.popover') || {}).inState || {}).click = false;  // fix for BS 3.3.6
+                }
+            });
+        });
+        //Delete files
+        $(document).on('click', '.popover-content-remove', function (e) {
+            //Get the id whose file to delete
+            let id = $(this).attr('data-target');
+            //Get the name of the file to delete
+            let name = $(this).attr('data-name');
+            //Confirm delete
+            let isDelete = confirm("Do you really want to delete this file?");
+            //If confirmed
+            if (isDelete) {
+                //Remove the requested file
+                let files = Object.values(fileStorage[id]);
+                let newArr = files.filter((e) => { return e.name !== name; });
+                //Update the list
+                storeFile(id, newArr);
+                //If there is no file then show No file
+                if(newArr.length === 0){
+                    $(this).parent().parent().append("<div class='col-12 pb10'><span class='popover-content'>No file</span></div>");
+                }
+                //Remove the current file
+                $(this).parent().remove();
+
+            }
+        });
+    });
+</script>
+{% endblock content %}
