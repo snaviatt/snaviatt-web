@@ -32,7 +32,7 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'facematch-home' %}">Snaviatt</a>
+          <a class="navbar-brand mr-4" href="{% url 'facematch-home' %}"><img style="width:35px; height:35px;" src="{% static 'facematch/img/logo-nav.png' %}" alt="logo"></a>
           <button class="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -62,14 +62,14 @@
     </header>
     <main role="main" class="container">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
           {% if messages %} {% for message in messages %}
           <div class="alert alert-{{ message.tags }}">
             {{ message }}
           </div>
           {% endfor %} {% endif %} {% block content %}{% endblock %}
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
           <div class="content-section">
             <h3>Our Sidebar</h3>
             <p class='text-muted'>You can put any information here you'd like.
@@ -81,9 +81,69 @@
               </ul>
             </p>
           </div>
-        </div>
+        </div> -->
       </div>
     </main>
+
+    <!-- Footer -->
+    <!-- <footer class="page-footer font-small unique-color pt-4 fixed-bottom"> -->
+      <!-- <hr> -->
+      <!-- Footer Links -->
+      <!-- <div class="container text-center text-md-left">
+
+        Footer links
+        <div class="row text-center text-md-center mt-3 pb-1"> -->
+          <!-- Grid column -->
+
+          <!-- <hr class="w-100 clearfix d-md-none"> -->
+
+          <!-- Grid column -->
+          <!-- <div class="col-md-10 col-lg-10 col-xl-10 mx-auto mt-2">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Project By</h6>
+              <ul class="list-unstyled list-inline">
+                <li class="list-inline-item">
+                  <a href="https://imkaka.github.io" target="_blank"><i class="fab fa-github"></i> Anil Khatri</a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#!" target="_blank"><i class="fab fa-github"></i> Aishwarya Avhinash</a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#!" target="_blank"><i class="fab fa-github"></i> Gaurav Gupta</a>
+                </li>
+              <li class="list-inline-item">
+                <a href="#!" target="_blank"><i class="fab fa-github"></i> Adarsh Tripathi</a>
+              </li>
+            </ul>
+          </div>
+
+        </div> -->
+        <!-- Footer links -->
+
+        <!-- <hr> -->
+
+        <!-- Grid row -->
+        <!-- <div class="row d-flex align-items-center"> -->
+
+          <!-- Grid column -->
+          <!-- <div class="col-md-7 col-lg-8"> -->
+
+            <!--Copyright-->
+            <!-- <p class="text-center text-md-right">© 2019 Copyright: -->
+              <!-- <a href="https://github.com/snaviatt" target="_blank"> -->
+              <!-- <strong> Snaviatt Inc.</strong> -->
+              <!-- </a> -->
+            <!-- </p> -->
+
+          <!-- </div> -->
+
+        <!-- </div> -->
+        <!-- Grid row -->
+
+      <!-- </div> -->
+      <!-- Footer Links -->
+
+    <!-- </footer> -->
+    <!-- Footer -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Font Awesome, Popper.js, then Bootstrap JS -->

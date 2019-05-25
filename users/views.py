@@ -28,7 +28,7 @@ def profile(request):
             u_form.save()
             p_form.save()
             messages.success(request, f'Your account has been updated!')
-            return redirect('profile') # POST_GET Redirect pattern (Resubmit error)
+            return redirect('profile')  # POST_GET Redirect pattern (Resubmit error)
 
     else:
         u_form = UserUpdateForm(instance=request.user)

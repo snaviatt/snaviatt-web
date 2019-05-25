@@ -1,11 +1,39 @@
 {% extends "facematch/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-    {% for data in student_data %}
-        <h5>{{ data.name }}</h5>
-        <p>{{ data.roll_no }}</p>
-        <p>{{ data.subject }}</p>
-        <p>{{ data.date }}</p>
-        <h5>{{ data.attendance }}</h5>
-    {% endfor %}
-{% endblock content %}
+    <div class="content-section">
+        <div class="content-section">
+            {% if view_data %}
+            <table style="border:2px;" width=100%>
+                <tr>
+                    <th>Roll Number</th>
+                    <th>Name</th>
+                    <th>Attendance</th>
+                </tr>
+                {% for key, value in view_data.items %}
+                <tr>
+                        <td>{{ value.roll }}</td>
+                            <td>{{ value.name }}</td>
+                        {% if value.attendance %}
+                            <td style="background:green;">Present</td>
+                        {% else %}
+                            <td style="background:orange">Absent</td>
+                        {% endif %}
 
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Confirm</button>
+            </div>
+        </form>
+
+    </div>
+
+
+{% endblock content %}

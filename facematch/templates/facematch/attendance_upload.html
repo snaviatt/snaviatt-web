@@ -2,16 +2,18 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="content-section">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
+
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Mark Attendance</legend>
-                {{ form|crispy }}
+
+                {{ form| crispy}}
             </fieldset>
-            <fiedlset class="form-group">
+            <!-- <fiedlset class="form-group">
                 <p>Image/Video File*</p>
                 <input class="mb-3 " type="file" accept=".jpg,.jpeg.,.gif,.png,.mov,.mp4" />
-            </fiedlset>
+            </fiedlset> -->
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Update Attendance</button>
             </div>
