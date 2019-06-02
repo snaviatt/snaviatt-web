@@ -1,0 +1,13 @@
+{% extends 'facematch/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <form method="get">
+    {{ filter.form|crispy }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for student in filter.qs %}
+    <li>{{ student.name }}  -  {{ student.program }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

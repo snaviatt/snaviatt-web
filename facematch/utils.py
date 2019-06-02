@@ -1,6 +1,5 @@
 import os
 import face_recognition
-# from PIL import Image, ImageDraw
 
 
 def identify(student_data, file_name):

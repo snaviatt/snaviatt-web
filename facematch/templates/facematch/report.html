@@ -1,0 +1,33 @@
+{% extends "facematch/base.html" %}
+{% load static %}
+{% block content %}
+    <div style="text-align: center; margin-bottom:70px;">
+        
+        <h1>View Report</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Student Record</h3>
+                    <p class="card-text">View Student Record here.</p>
+                    <div class="text-center">
+                        <a href="{% url 'facematch-report-student' %}" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Attendeance Record</h3>
+                    <p class="card-text">View Attendance Record here.</p>
+                    <div class="text-center">
+                        <a href="{% url 'facematch-report-attendance' %}" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+    
+{% endblock content %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from.forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
@@ -40,3 +40,9 @@ def profile(request):
     }
 
     return render(request, 'users/profile.html', context)
+
+
+def handler404(request, exception, template_name="facematch/404.html"):
+    response = render_to_response("404.html")
+    response.status_code = 404
+    return response

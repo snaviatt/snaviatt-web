@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'facematch.apps.FacematchConfig',  # Our App
+    'widget_tweaks',                   # Filter
     'users.apps.UsersConfig',
     'crispy_forms',
     'django.contrib.admin',

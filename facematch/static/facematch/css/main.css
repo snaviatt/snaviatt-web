@@ -203,3 +203,15 @@ span.popover-content-remove {
 .popover{
     min-width: 200px;
 }
+
+/*Loading gif*/
+.ajaxProgress{
+display: none
+text-allign: center;
+padding: 20px;
+width:300px;
+}
+
+/*.about {
+  background: url(./../img/students.jpg);
+}*/
