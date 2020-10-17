@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import ListView, CreateView
+from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 
 from django.utils.dateparse import parse_date

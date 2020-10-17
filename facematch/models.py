@@ -2,7 +2,6 @@ from django.db import models
 # from django.utils import timezone
 from PIL import Image
 from datetime import date
-from django.contrib.auth.models import User
 
 
 class Student(models.Model):
@@ -12,15 +11,12 @@ class Student(models.Model):
     semester = models.PositiveIntegerField()
     section = models.CharField(max_length=2)
     image = models.ImageField(upload_to='students_pics')
-    # attendance = models.ForeignKey(Attendance, on_delete=models.CASCADE)
-    # image_path = models.FilePathField(path=os.join(MEDIA_ROOT, 'students'), match='*.[jpg, jpeg, png]', recursive=True)
-    # teacher = models.ForeignKey(User, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.name
 
-    def save(self, **kwargs):
-        super().save(**kwargs)
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
         img = Image.open(self.image.path)
         if img.height > 300 or img.width > 300:
