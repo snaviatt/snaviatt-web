@@ -74,19 +74,17 @@ def info(request):
                 request.session['date'] = date
                 request.session['subject'] = subject
 
-                messages.success(request, f'Please Upload Image File to mark attendance. ')
+                messages.success(request, 'Please Upload Image File to mark attendance')
                 return redirect('facematch-attendance-upload')
-            else:
-                messages.warning(request, f'Opps, No Student Record Found')
-                return redirect('facematch-attendance-getdata')
+
+            # Else case
+            messages.warning(request, 'Opps, No Student Record Found')
+            return redirect('facematch-attendance-getdata')
 
     else:
         form = AttendanceForm()
 
-    context = {
-        'form': form
-    }
-
+    context = { 'form': form }
     return render(request, 'facematch/attendance_info.html', context)
 
 

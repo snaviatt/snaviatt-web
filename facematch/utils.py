@@ -33,9 +33,7 @@ def identify(student_data, file_name):
             attendance[id] = True    # Present
 
     for student in student_data:
-        if student.id in attendance.keys():
-            continue
-        else:
+        if student.id not in attendance.keys():
             attendance[student.id] = False  # Absent
 
     os.remove(f'./media/raw_files/{file_name}')
