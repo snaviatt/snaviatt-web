@@ -43,7 +43,7 @@ def getData(request):
             request.session['section'] = section
             request.session['semester'] = semester
 
-            messages.success(request, f'Please Provide Details for marking attendance.')
+            messages.success(request, 'Please Provide Details for marking attendance.')
             return redirect('facematch-attendance-info')
     else:
         form = GetDataForm()
@@ -84,7 +84,7 @@ def info(request):
     else:
         form = AttendanceForm()
 
-    context = { 'form': form }
+    context = {'form': form}
     return render(request, 'facematch/attendance_info.html', context)
 
 
@@ -107,18 +107,16 @@ def upload(request):
                 # processed_student_data = sorted(processed_student_data)
                 request.session["student_data"] = processed_student_data
             except FileNotFoundError:
-                messages.warning(request, f'ATTENDANCE NOT MARKED!! Some Images are missing, Please contact Admin.')
+                messages.warning(request, 'ATTENDANCE NOT MARKED!! Some Images are missing, Please contact Admin.')
                 return redirect("facematch-home")
-            #Delete in DB
+            # Delete in DB
             TempFile.objects.filter(image=f'raw_files/{file_name}').delete()
-            messages.success(request, f'Please Confirm!!')
+            messages.success(request, 'Please Confirm!!')
             return redirect('facematch-confirm')
     else:
         form = UploadFileForm()
 
-    context = {
-        'form': form
-    }
+    context = {'form': form}
 
     return render(request, 'facematch/attendance_upload.html', context)
 
@@ -135,7 +133,7 @@ def confirm(request):
             attn = Attendance(attendance=value, lecture=lecture, subject=subject, date=date,
                               student=Student.objects.get(id=key))
             attn.save()
-        messages.success(request, f'Attendance marked Successfully.')
+        messages.success(request, 'Attendance marked Successfully.')
         return redirect('facematch-home')
 
     view_data = {}
