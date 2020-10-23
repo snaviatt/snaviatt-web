@@ -84,7 +84,7 @@ def info(request):
     else:
         form = AttendanceForm()
 
-    context = { 'form': form }
+    context = {'form': form}
     return render(request, 'facematch/attendance_info.html', context)
 
 
@@ -109,16 +109,14 @@ def upload(request):
             except FileNotFoundError:
                 messages.warning(request, 'ATTENDANCE NOT MARKED!! Some Images are missing, Please contact Admin.')
                 return redirect("facematch-home")
-            #Delete in DB
+            # Delete in DB
             TempFile.objects.filter(image=f'raw_files/{file_name}').delete()
             messages.success(request, 'Please Confirm!!')
             return redirect('facematch-confirm')
     else:
         form = UploadFileForm()
 
-    context = {
-        'form': form
-    }
+    context = {'form': form}
 
     return render(request, 'facematch/attendance_upload.html', context)
 
