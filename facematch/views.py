@@ -64,7 +64,7 @@ def info(request):
             section = request.session.get('section')
             semester = request.session.get('semester')
             student_data = Student.objects.filter(
-                program=program, 
+                program=program,
                 section=section, 
                 semester=semester
             ).order_by('rollno')
@@ -104,7 +104,7 @@ def upload(request):
             section = request.session.get('section')
             semester = request.session.get('semester')
             student_data = Student.objects.filter(
-                program=program, 
+                program=program,
                 section=section, 
                 semester=semester
             )
@@ -116,8 +116,9 @@ def upload(request):
                 request.session["student_data"] = processed_student_data
             except FileNotFoundError:
                 messages.warning(
-                    request, 
-                    'ATTENDANCE NOT MARKED!! Some Images are missing, Please contact Admin.'
+                    request,
+                    'ATTENDANCE NOT MARKED!! Some Images are missing, '
+                    'Please contact Admin.'
                 )
                 return redirect("facematch-home")
             # Delete in DB
@@ -142,8 +143,8 @@ def confirm(request):
         # Saving data to DB.
         for key, value in student_data.items():
             attn = Attendance(
-                attendance=value, 
-                lecture=lecture, 
+                attendance=value,
+                lecture=lecture,
                 subject=subject, 
                 date=date,
                 student=Student.objects.get(id=key)
@@ -177,8 +178,8 @@ def studentReport(request):
     student_filter = StudentFilter(request.GET, queryset=student_list)
 
     return render(
-        request, 
-        'facematch/student_report_new.html', 
+        request,
+        'facematch/student_report_new.html',
         {'filter': student_filter}
     )
 
@@ -188,7 +189,7 @@ def attendanceReport(request):
     attendance_filter = AttendanceFilter(request.GET, queryset=attendance_list)
 
     return render(
-        request, 
-        'facematch/student_attendance_report.html', 
+        request,
+        'facematch/student_attendance_report.html',
         {'filter': attendance_filter}
     )
