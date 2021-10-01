@@ -1,0 +1,46 @@
+exclude: 'settings.py'
+fail_fast: true
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks.git
+    rev: v4.0.1
+    hooks:
+    -   id: trailing-whitespace
+    -   id: check-yaml
+        args: [--unsafe]
+    -   id: check-json
+    -   id: check-docstring-first
+    -   id: requirements-txt-fixer
+    -   id: debug-statements
+    -   id: check-toml
+    -   id: pretty-format-json
+        args: [--autofix]
+    -   id: no-commit-to-branch
+        args: [--branch, main]
+
+-   repo: https://github.com/asottile/pyupgrade
+    rev: v2.26.0
+    hooks:
+    -   id: pyupgrade
+        exclude: ^smart_attendance/settings.py|/migrations/|/site-pacakges/
+        args: [--py37-plus]
+
+-   repo: https://github.com/psf/black
+    rev: 21.9b0
+    hooks:
+    -   id: black
+        exclude: ^smart_attendance/settings.py|/migrations/|/site-pacakges/
+        language_version: python3.7
+
+-   repo: https://github.com/PyCQA/flake8
+    rev: 3.9.2
+    hooks:
+    -   id: flake8
+        additional_dependencies: [flake8-typing-imports==1.10.0]
+
+-   repo: local
+    hooks:
+    -   id: tests
+        name: run tests
+        entry: pytest
+        pass_filenames: false
+        language: system

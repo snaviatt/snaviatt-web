@@ -1,0 +1,19 @@
+[flake8]
+max-line-length = 99
+max-complexity = 18
+ignore = E203, E266, E501, W503, E231, C901
+select = B,C,E,F,W,T4,B9
+exclude =
+    # ignore local settings
+    smart_attendance/settings.py,
+    # ignore migrations
+    */migrations/*,
+    # ignore thrid-party packages and virtual envs
+    */site-packages/*,
+    .env,
+    .venv,
+    env/,
+    venv/,
+    ENV/,
+    env.bak/,
+    venv.bak/,

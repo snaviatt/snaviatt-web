@@ -48,9 +48,7 @@ def getData(request):
     else:
         form = GetDataForm()
 
-    context = {
-        'form': form
-    }
+    context = {'form': form}
 
     return render(request, 'facematch/attendance_getdata.html', context)
 
@@ -64,9 +62,7 @@ def info(request):
             section = request.session.get('section')
             semester = request.session.get('semester')
             student_data = Student.objects.filter(
-                program=program,
-                section=section,
-                semester=semester
+                program=program, section=section, semester=semester
             ).order_by('rollno')
 
             if student_data:
@@ -104,9 +100,7 @@ def upload(request):
             section = request.session.get('section')
             semester = request.session.get('semester')
             student_data = Student.objects.filter(
-                program=program,
-                section=section,
-                semester=semester
+                program=program, section=section, semester=semester
             )
 
             # Recognition Function
@@ -117,8 +111,7 @@ def upload(request):
             except FileNotFoundError:
                 messages.warning(
                     request,
-                    'ATTENDANCE NOT MARKED!! Some Images are missing, '
-                    'Please contact Admin.'
+                    'ATTENDANCE NOT MARKED!! Some Images are missing, ' 'Please contact Admin.',
                 )
                 return redirect("facematch-home")
             # Delete in DB
@@ -147,7 +140,7 @@ def confirm(request):
                 lecture=lecture,
                 subject=subject,
                 date=date,
-                student=Student.objects.get(id=key)
+                student=Student.objects.get(id=key),
             )
             attn.save()
         messages.success(request, 'Attendance marked Successfully.')
@@ -157,14 +150,8 @@ def confirm(request):
 
     for key, value in student_data.items():
         student = Student.objects.get(id=key)
-        view_data[key] = {
-            'roll': student.rollno,
-            'name': student.name,
-            'attendance': value
-        }
-    context = {
-        'view_data': view_data
-    }
+        view_data[key] = {'roll': student.rollno, 'name': student.name, 'attendance': value}
+    context = {'view_data': view_data}
     return render(request, 'facematch/confirm.html', context)
 
 
@@ -177,11 +164,7 @@ def studentReport(request):
     student_list = Student.objects.all().order_by('rollno')
     student_filter = StudentFilter(request.GET, queryset=student_list)
 
-    return render(
-        request,
-        'facematch/student_report_new.html',
-        {'filter': student_filter}
-    )
+    return render(request, 'facematch/student_report_new.html', {'filter': student_filter})
 
 
 def attendanceReport(request):
@@ -189,7 +172,5 @@ def attendanceReport(request):
     attendance_filter = AttendanceFilter(request.GET, queryset=attendance_list)
 
     return render(
-        request,
-        'facematch/student_attendance_report.html',
-        {'filter': attendance_filter}
+        request, 'facematch/student_attendance_report.html', {'filter': attendance_filter}
     )

@@ -30,7 +30,7 @@ def identify(student_data, file_name):
             first_match_index = matches.index(True)
             id = student_face_id[first_match_index]
 
-            attendance[id] = True    # Present
+            attendance[id] = True  # Present
 
     for student in student_data:
         if student.id not in attendance.keys():
