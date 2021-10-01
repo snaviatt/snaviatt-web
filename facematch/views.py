@@ -63,7 +63,11 @@ def info(request):
             program = request.session.get('program')
             section = request.session.get('section')
             semester = request.session.get('semester')
-            student_data = Student.objects.filter(program=program, section=section, semester=semester).order_by('rollno')
+            student_data = Student.objects.filter(
+                program=program, 
+                section=section, 
+                semester=semester
+            ).order_by('rollno')
 
             if student_data:
                 lecture = form.cleaned_data.get('lecture')
@@ -99,7 +103,11 @@ def upload(request):
             program = request.session.get('program')
             section = request.session.get('section')
             semester = request.session.get('semester')
-            student_data = Student.objects.filter(program=program, section=section, semester=semester)
+            student_data = Student.objects.filter(
+                program=program, 
+                section=section, 
+                semester=semester
+            )
 
             # Recognition Function
             try:
@@ -107,7 +115,10 @@ def upload(request):
                 # processed_student_data = sorted(processed_student_data)
                 request.session["student_data"] = processed_student_data
             except FileNotFoundError:
-                messages.warning(request, 'ATTENDANCE NOT MARKED!! Some Images are missing, Please contact Admin.')
+                messages.warning(
+                    request, 
+                    'ATTENDANCE NOT MARKED!! Some Images are missing, Please contact Admin.'
+                )
                 return redirect("facematch-home")
             # Delete in DB
             TempFile.objects.filter(image=f'raw_files/{file_name}').delete()
@@ -130,8 +141,13 @@ def confirm(request):
 
         # Saving data to DB.
         for key, value in student_data.items():
-            attn = Attendance(attendance=value, lecture=lecture, subject=subject, date=date,
-                              student=Student.objects.get(id=key))
+            attn = Attendance(
+                attendance=value, 
+                lecture=lecture, 
+                subject=subject, 
+                date=date,
+                student=Student.objects.get(id=key)
+            )
             attn.save()
         messages.success(request, 'Attendance marked Successfully.')
         return redirect('facematch-home')
@@ -160,11 +176,19 @@ def studentReport(request):
     student_list = Student.objects.all().order_by('rollno')
     student_filter = StudentFilter(request.GET, queryset=student_list)
 
-    return render(request, 'facematch/student_report_new.html', {'filter': student_filter})
+    return render(
+        request, 
+        'facematch/student_report_new.html', 
+        {'filter': student_filter}
+    )
 
 
 def attendanceReport(request):
     attendance_list = Attendance.objects.all().order_by('student')
     attendance_filter = AttendanceFilter(request.GET, queryset=attendance_list)
 
-    return render(request, 'facematch/student_attendance_report.html', {'filter': attendance_filter})
+    return render(
+        request, 
+        'facematch/student_attendance_report.html', 
+        {'filter': attendance_filter}
+    )
