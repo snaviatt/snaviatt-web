@@ -65,7 +65,7 @@ def info(request):
             semester = request.session.get('semester')
             student_data = Student.objects.filter(
                 program=program,
-                section=section, 
+                section=section,
                 semester=semester
             ).order_by('rollno')
 
@@ -105,7 +105,7 @@ def upload(request):
             semester = request.session.get('semester')
             student_data = Student.objects.filter(
                 program=program,
-                section=section, 
+                section=section,
                 semester=semester
             )
 
@@ -145,7 +145,7 @@ def confirm(request):
             attn = Attendance(
                 attendance=value,
                 lecture=lecture,
-                subject=subject, 
+                subject=subject,
                 date=date,
                 student=Student.objects.get(id=key)
             )
