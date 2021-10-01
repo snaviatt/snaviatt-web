@@ -9,7 +9,7 @@ class StudentFilter(django_filters.FilterSet):
         fields = ['rollno', 'name', 'program', 'semester', 'section']
 
     def __init__(self, *args, **kwargs):
-        super(StudentFilter, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         # at startup user doesn't push Submit button, and QueryDict (in data) is empty
         if self.data == {}:
             self.queryset = self.queryset.none()
@@ -18,12 +18,12 @@ class StudentFilter(django_filters.FilterSet):
 class AttendanceFilter(django_filters.FilterSet):
     class Meta:
         model = Attendance
-        fields = ['date' , 'lecture' , 'subject', 'student', 'attendance']
+        fields = ['date', 'lecture', 'subject', 'student', 'attendance']
 
     def __init__(self, *args, **kwargs):
         """
         At startup user doesn't push submit button, and QueryDict (in data) is empty
         """
-        super(AttendanceFilter, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         if self.data == {}:
             self.queryset = self.queryset.none()
