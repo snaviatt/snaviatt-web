@@ -21,14 +21,14 @@ repos:
     rev: v2.26.0
     hooks:
     -   id: pyupgrade
-        exclude: ^Smart_Attendance_App/settings.py|/migrations/|/site-pacakges/
+        exclude: ^smart_attendance/settings.py|/migrations/|/site-pacakges/
         args: [--py37-plus]
 
 -   repo: https://github.com/psf/black
     rev: 21.9b0
     hooks:
     -   id: black
-        exclude: ^Smart_Attendance_App/settings.py|/migrations/|/site-pacakges/
+        exclude: ^smart_attendance/settings.py|/migrations/|/site-pacakges/
         language_version: python3.7
 
 -   repo: https://github.com/PyCQA/flake8

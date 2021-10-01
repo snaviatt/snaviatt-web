@@ -18,7 +18,7 @@ exclude = '''
     | dist
   )/
 
-  | Smart_Attendance_App/settings.py  # ignore local settings
+  | smart_attendance/settings.py  # ignore local settings
   | /migrations/                      # ignore migrations
   | /site-packages/                   # ignore thrid-party packages
 )

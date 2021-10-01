@@ -1,5 +1,5 @@
 """
-WSGI config for Smart_Attendance_App project.
+WSGI config for smart_attendance project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Smart_Attendance_App.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'smart_attendance.settings')
 
 application = get_wsgi_application()
