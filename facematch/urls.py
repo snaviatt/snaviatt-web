@@ -16,7 +16,11 @@ urlpatterns = [
 
     # Filtering routes
     path('report/student', views.studentReport, name='facematch-report-student'),
-    path('report/attendance', views.attendanceReport, name='facematch-report-attendance'),
+    path(
+        'report/attendance',
+        views.attendanceReport,
+        name='facematch-report-attendance'
+    ),
     path('report', views.report, name='facematch-report'),
 
 
