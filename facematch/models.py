@@ -16,7 +16,7 @@ class Student(models.Model):
     def __str__(self):
         return self.name
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):  # skipcq PYL-W0221
         super().save(*args, **kwargs)
 
         img = Image.open(self.image.path)
